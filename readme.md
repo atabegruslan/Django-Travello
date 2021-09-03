@@ -386,7 +386,7 @@ Try POST from Postman:
 
 ## User accounts via API
 
-1. Copied https://www.youtube.com/watch?v=Wq6JqXqOzCE&list=PLgCYzUzKIBE9Pi8wtx8g55fExDAPXBsbV&index=7 8:31 into `accounts/models.py`
+1. Do `accounts/models.py`
 
 2. Complete all inside `accounts/api/`
 
@@ -419,3 +419,22 @@ REST_FRAMEWORK = {
 ```
 
 5. Run `python manage.py migrate` to create `authtoken_token` table.
+
+6. Now you can try Register and Login
+
+```
+curl --location --request POST 'http://127.0.0.1:8000/api/accounts/register' \
+--form 'email="test@user.com"' \
+--form 'username="testuser"' \
+--form 'password="Abcdefg8!"' \
+--form 'password2="Abcdefg8!"' \
+--form 'first_name="Test"' \
+--form 'last_name="User"'
+```
+
+```
+curl --location --request POST 'http://127.0.0.1:8000/api/accounts/login' \
+--form 'email="test@user.com"' \
+--form 'username="testuser"' \
+--form 'password="Abcdefg8!"'
+```
